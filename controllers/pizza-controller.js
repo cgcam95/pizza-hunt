@@ -13,12 +13,10 @@ const pizzaController = {
 
   // get one pizza by id
   getPizzaById({ params }, res) {
-    // why does this use params?
     Pizza.findOne({ _id: params.id })
       .then((dbPizzaData) => {
         // if no pizza is found, send 404
         if (!dbPizzaData) {
-          // what does "!" mean in this?
           res.status(404).json({ message: "No pizza found with this id" });
           return;
         }
@@ -32,7 +30,6 @@ const pizzaController = {
 
   // createPizza
   createPizza({ body }, res) {
-    //why does this use body?
     Pizza.create(body)
       .then((dbPizzaData) => res.json(dbPizzaData))
       .catch((err) => res.status(400).json(err));
@@ -40,7 +37,6 @@ const pizzaController = {
 
   // update pizza by id
   updatePizza({ params, body }, res) {
-    //why does this use params & body
     Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((dbPizzaData) => {
         if (!dbPizzaData) {
