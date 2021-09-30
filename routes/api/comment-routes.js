@@ -1,15 +1,24 @@
 const router = require('express').Router();
+
 const {
     addComment,
-    removeComment
+    removeComment,
+    addReply,
+    removeReply
 } = require('../../controllers/comment-controller');
 
-// set up the /api/comments/<pizzaId>
+// set up the /api/comments/:pizzaId/:commentId
+router
+.route('/:pizzaId/:commentId')
+.put(addReply)
+.delete(removeComment)
 
+// set up the /api/comments/<pizzaId>
 router.route('/:pizzaId').post(addComment);             // how does it know its api/comments/pizzaid
 
-// set up the /api/comments/<pizzaId>/<commentId>
-
-router.route('/:pizzaId/:commentId').delete(removeComment);
+// /api/comments/<pizzaId>/<commentId>/<replyId>
+router.route('/:pizzaId/:commentId/:replyId').delete(removeReply);
 
 module.exports = router;
+
+// NEED TO GO OVER HOW THE API URL DECIDES WHICH ROUTES TO USE
