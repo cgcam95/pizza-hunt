@@ -33,7 +33,7 @@ const PizzaSchema = new Schema({
 },
 {
   toJSON: {
-    virtuals: true,     //what are these for again?!
+    virtuals: true,   
     getters: true
   },
   // prevents virtuals from creating duplicate of _id as `id`
@@ -43,7 +43,7 @@ const PizzaSchema = new Schema({
 
 // get total count of comments and replies on retrieval
 PizzaSchema.virtual('commentCount').get(function() {
-  return this.comments.reduce((total, comment) => total + comment.replies.length + 1, 0);     // confused on how the .reduce method works
+  return this.comments.reduce((total, comment) => total + comment.replies.length + 1, 0); 
 });
 
 // create the Pizza model using the PizzaSchema

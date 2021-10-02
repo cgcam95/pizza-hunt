@@ -20,5 +20,3 @@ router.route('/:pizzaId').post(addComment);             // how does it know its 
 router.route('/:pizzaId/:commentId/:replyId').delete(removeReply);
 
 module.exports = router;
-
-// NEED TO GO OVER HOW THE API URL DECIDES WHICH ROUTES TO USE
